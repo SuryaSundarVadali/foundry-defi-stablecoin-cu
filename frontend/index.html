@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>DSCEngine UI</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <h1>DSCEngine DApp</h1>
+    <button id="connectButton">Connect to MetaMask</button>
+
+    <!-- Deposit Collateral & Mint -->
+    <div class="inputBox">
+      <label>Collateral Amount</label>
+      <input type="text" id="collateralAmount" placeholder="Collateral Amount" />
+      <label>DSC Amount to Mint</label>
+      <input type="text" id="dscAmount" placeholder="DSC to Mint" />
+      <button id="depositCollateralAndMintButton">Deposit & Mint</button>
+    </div>
+
+    <!-- Mint Only -->
+    <div class="inputBox">
+      <label>Mint DSC</label>
+      <input type="text" id="mintedDsc" placeholder="Amount to Mint" />
+      <button id="mintButton">Mint DSC</button>
+    </div>
+
+    <!-- Redeem Collateral -->
+    <div class="inputBox">
+      <label>Redeem Collateral</label>
+      <input type="text" id="redeemAmount" placeholder="Amount to Redeem" />
+      <button id="redeemButton">Redeem</button>
+    </div>
+
+    <!-- Redeem Collateral for DSC -->
+    <div class="inputBox">
+      <label>Redeem Collateral for DSC</label>
+      <input type="text" id="redeemForDscCollateralAmount" placeholder="Collateral Amount" />
+      <input type="text" id="redeemForDscBurnAmount" placeholder="DSC to Burn" />
+      <button id="redeemForDscButton">Redeem Collateral & Burn DSC</button>
+    </div>
+
+    <!-- Burn DSC -->
+    <div class="inputBox">
+      <label>Burn DSC</label>
+      <input type="text" id="burnedDsc" placeholder="Amount to Burn" />
+      <button id="burnButton">Burn DSC</button>
+    </div>
+
+    <!-- Liquidate -->
+    <div class="inputBox">
+      <label>Liquidate User</label>
+      <input type="text" id="liquidateCollateral" placeholder="Collateral Token Address" />
+      <input type="text" id="liquidateUser" placeholder="Target User Address" />
+      <input type="text" id="liquidateDebt" placeholder="DSC Debt to Cover" />
+      <button id="liquidateButton">Liquidate</button>
+    </div>
+
+    <script src="./ethers-6.7.esm.min.js"></script>
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>

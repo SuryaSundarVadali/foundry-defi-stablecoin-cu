@@ -1,0 +1,6 @@
+export const engineAddress = "0x8fBF8Ef5B036ab414F8816a27050CA235bE45a8f"
+export const dscAddress = "0xDdA6a4f66c62AE114c790cdEf5EE72D401A1EFE3"
+export const wethAddress = "0xdd13E55209Fd76AfE204dBda4007C227904f0a81"
+export const wbtcAddress = "0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063"
+
+1,000,000,000,000,000,000

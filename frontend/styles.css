@@ -1,0 +1,27 @@
+body {
+  font-family: sans-serif;
+  margin: 20px;
+  background: #f4f4f4;
+}
+h1 {
+  margin-bottom: 10px;
+}
+.inputBox {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+label {
+  margin-top: 5px;
+  font-weight: 600;
+}
+input {
+  margin-top: 5px;
+  padding: 6px 8px;
+}
+button {
+  margin-top: 10px;
+  cursor: pointer;
+  padding: 8px 12px;
+}

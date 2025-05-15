@@ -22,7 +22,7 @@
 
 // SPDX-License-Identifier: MIT
 
-pragma solidity 0.8.19;
+pragma solidity ^0.8.20;
 
 import { OracleLib, AggregatorV3Interface } from "./libraries/OracleLib.sol";
 // The correct path for ReentrancyGuard in latest Openzeppelin contracts is 
