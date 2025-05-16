@@ -4,59 +4,94 @@
     <meta charset="UTF-8" />
     <title>DSCEngine UI</title>
     <link rel="stylesheet" href="./styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
-    <h1>DSCEngine DApp</h1>
-    <button id="connectButton">Connect to MetaMask</button>
+    <div class="container">
+      <h1>Decentralized Stablecoin Engine</h1>
+      <button id="connectButton">Connect to MetaMask</button>
+      
+      <!-- Account Balances -->
+      <div class="balanceBox">
+        <h3>Account Balances</h3>
+        <div id="accountInfo">
+          <p>DSC Minted: <span id="totalDscMinted">-</span> DSC</p>
+          <p>Collateral Value (USD): $<span id="collateralValueInUsd">-</span></p>
+        </div>
+        <button id="refreshBalanceButton">Refresh Balances</button>
+        <button id="getAccountBalanceButton">Get Account Information</button>
+      </div>
 
-    <!-- Deposit Collateral & Mint -->
-    <div class="inputBox">
-      <label>Collateral Amount</label>
-      <input type="text" id="collateralAmount" placeholder="Collateral Amount" />
-      <label>DSC Amount to Mint</label>
-      <input type="text" id="dscAmount" placeholder="DSC to Mint" />
-      <button id="depositCollateralAndMintButton">Deposit & Mint</button>
+      <!-- Health Factor -->
+      <div class="balanceBox">
+        <h3>Health Factor</h3>
+        <div id="healthFactorInfo">
+          <p>Your Health Factor: <span id="healthFactor">-</span></p>
+          <p>Health Factor > 1 is healthy. Lower values risk liquidation.</p>
+        </div>
+        <button id="getHealthFactorButton">Check Health Factor</button>
+      </div>
+
+      <div class="grid-container">
+        <!-- Deposit Collateral & Mint -->
+        <div class="inputBox">
+          <h3>Deposit & Mint</h3>
+          <label>Collateral Amount</label>
+          <input type="text" id="collateralAmount" placeholder="Collateral Amount" />
+          <label>DSC Amount to Mint</label>
+          <input type="text" id="dscAmount" placeholder="DSC to Mint" />
+          <button id="depositCollateralAndMintButton">Deposit & Mint</button>
+        </div>
+
+        <!-- Mint Only -->
+        <div class="inputBox">
+          <h3>Mint DSC</h3>
+          <label>Mint DSC</label>
+          <input type="text" id="mintedDsc" placeholder="Amount to Mint" />
+          <button id="mintButton">Mint DSC</button>
+        </div>
+
+        <!-- Redeem Collateral -->
+        <div class="inputBox">
+          <h3>Redeem Collateral</h3>
+          <label>Redeem Collateral</label>
+          <input type="text" id="redeemAmount" placeholder="Amount to Redeem" />
+          <button id="redeemButton">Redeem</button>
+        </div>
+
+        <!-- Redeem Collateral for DSC -->
+        <div class="inputBox">
+          <h3>Redeem for DSC</h3>
+          <label>Collateral Amount</label>
+          <input type="text" id="redeemForDscCollateralAmount" placeholder="Collateral Amount" />
+          <label>DSC to Burn</label>
+          <input type="text" id="redeemForDscBurnAmount" placeholder="DSC to Burn" />
+          <button id="redeemForDscButton">Redeem & Burn</button>
+        </div>
+
+        <!-- Burn DSC -->
+        <div class="inputBox">
+          <h3>Burn DSC</h3>
+          <label>Burn DSC</label>
+          <input type="text" id="burnedDsc" placeholder="Amount to Burn" />
+          <button id="burnButton">Burn DSC</button>
+        </div>
+
+        <!-- Liquidate -->
+        <div class="inputBox">
+          <h3>Liquidate Position</h3>
+          <label>Collateral Token Address</label>
+          <input type="text" id="liquidateCollateral" placeholder="Collateral Token Address" />
+          <label>Target User Address</label>
+          <input type="text" id="liquidateUser" placeholder="Target User Address" />
+          <label>DSC Debt to Cover</label>
+          <input type="text" id="liquidateDebt" placeholder="DSC Debt to Cover" />
+          <button id="liquidateButton">Liquidate</button>
+        </div>
+      </div>
     </div>
 
-    <!-- Mint Only -->
-    <div class="inputBox">
-      <label>Mint DSC</label>
-      <input type="text" id="mintedDsc" placeholder="Amount to Mint" />
-      <button id="mintButton">Mint DSC</button>
-    </div>
-
-    <!-- Redeem Collateral -->
-    <div class="inputBox">
-      <label>Redeem Collateral</label>
-      <input type="text" id="redeemAmount" placeholder="Amount to Redeem" />
-      <button id="redeemButton">Redeem</button>
-    </div>
-
-    <!-- Redeem Collateral for DSC -->
-    <div class="inputBox">
-      <label>Redeem Collateral for DSC</label>
-      <input type="text" id="redeemForDscCollateralAmount" placeholder="Collateral Amount" />
-      <input type="text" id="redeemForDscBurnAmount" placeholder="DSC to Burn" />
-      <button id="redeemForDscButton">Redeem Collateral & Burn DSC</button>
-    </div>
-
-    <!-- Burn DSC -->
-    <div class="inputBox">
-      <label>Burn DSC</label>
-      <input type="text" id="burnedDsc" placeholder="Amount to Burn" />
-      <button id="burnButton">Burn DSC</button>
-    </div>
-
-    <!-- Liquidate -->
-    <div class="inputBox">
-      <label>Liquidate User</label>
-      <input type="text" id="liquidateCollateral" placeholder="Collateral Token Address" />
-      <input type="text" id="liquidateUser" placeholder="Target User Address" />
-      <input type="text" id="liquidateDebt" placeholder="DSC Debt to Cover" />
-      <button id="liquidateButton">Liquidate</button>
-    </div>
-
-    <script src="./ethers-6.7.esm.min.js"></script>
+    <script type="module" src="./ethers-6.7.esm.min.js"></script>
     <script type="module" src="./index.js"></script>
   </body>
 </html>

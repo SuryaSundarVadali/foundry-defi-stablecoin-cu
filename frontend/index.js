@@ -8,6 +8,9 @@ const redeemButton = document.getElementById("redeemButton")
 const redeemForDscButton = document.getElementById("redeemForDscButton")
 const burnButton = document.getElementById("burnButton")
 const liquidateButton = document.getElementById("liquidateButton")
+const getAccountBalanceButton = document.getElementById("getAccountBalanceButton") || document.createElement("button")
+const getHealthFactorButton = document.getElementById("getHealthFactorButton") || document.createElement("button")
+
 
 connectButton.onclick = connect
 depositCollateralAndMintButton.onclick = depositCollateralAndMintDsc
@@ -16,6 +19,8 @@ redeemButton.onclick = redeemCollateral
 redeemForDscButton.onclick = redeemCollateralForDsc
 burnButton.onclick = burnDsc
 liquidateButton.onclick = liquidatePosition
+getAccountBalanceButton.onclick = getAccountBalance
+getHealthFactorButton.onclick = getHealthFactor
 
 async function connect() {
   if (typeof window.ethereum !== "undefined") {
@@ -161,3 +166,37 @@ async function liquidatePosition() {
     console.log(error)
   }
 }
+
+// get account information (DSC minted and collateral value)
+async function getAccountBalance() {
+  if (!window.ethereum) return
+  try {
+    const provider = new ethers.BrowserProvider(window.ethereum)
+    const signer = await provider.getSigner()
+    const address = await signer.getAddress()
+    const contract = new ethers.Contract(contractAddress, abi, signer)
+    const [totalDscMinted, collateralValueInUsd] = await contract.getAccountInformation(address)
+    // Update the UI with the fetched balances
+    document.getElementById("totalDscMinted").textContent = ethers.formatUnits(totalDscMinted, 18)
+    document.getElementById("collateralValueInUsd").textContent = ethers.formatUnits(collateralValueInUsd, 18)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+// getHealthFactor
+async function getHealthFactor() {
+  if (!window.ethereum) return
+  try {
+    const provider = new ethers.BrowserProvider(window.ethereum)
+    const signer = await provider.getSigner()
+    const address = await signer.getAddress()
+    const contract = new ethers.Contract(contractAddress, abi, signer)
+    const healthFactor = await contract.getHealthFactor(address)
+    document.getElementById("healthFactor").textContent = ethers.formatUnits(healthFactor, 18)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+// Add button event listener
